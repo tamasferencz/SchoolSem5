@@ -1,4 +1,4 @@
-package konkurens.gy2;
+package gy2;
 
 /**
  * Configurations for ThreadCraft

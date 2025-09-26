@@ -1,4 +1,4 @@
-package konkurens.gy2;
+package gy2;
 
 /**
  * Cheap version of Warcraft 3
