@@ -1,6 +1,6 @@
-package konkurens.gy1;
-import java.io.*;
+package gy1;
 
+import java.io.*;
 
 public class Main {
     public static void main(String[] args) {

@@ -1,6 +1,5 @@
 
-package konkurens.gy1;
-
+package gy1;
 
 public class MainHelp {
     public static void main(String[] args) {
