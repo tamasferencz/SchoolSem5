@@ -9,7 +9,6 @@ package konkurens.gy2;
  */
 public class Resources {
 
-    // TODO: Make the methods thread safe
     // Multiple threads will try to access these resources at the same time
 
     private int goldmineCapacity = Configuration.GOLDMINE_CAPACITY;
@@ -22,7 +21,7 @@ public class Resources {
      * 
      * @return Whether mining has been successful or not
      */
-    public boolean tryToMineGold() {
+    public synchronized boolean tryToMineGold() {
         if (goldmineCapacity > 0) {
             this.goldmineCapacity -= Configuration.MINING_AMOUNT;
             this.gold += Configuration.MINING_AMOUNT;
@@ -36,7 +35,7 @@ public class Resources {
      * 
      * @return
      */
-    public int getHouses() {
+    public synchronized int getHouses() {
         return houses;
     }
 
@@ -46,7 +45,7 @@ public class Resources {
      * 
      * @return Whether building was successful or not
      */
-    public boolean tryToBuildHouse() {
+    public synchronized boolean tryToBuildHouse() {
         if (this.gold >= Configuration.HOUSE_COST) {
             this.houses++;
             this.gold -= Configuration.HOUSE_COST;
@@ -60,7 +59,7 @@ public class Resources {
      * 
      * @return
      */
-    public int getGold() {
+    public synchronized int getGold() {
         return this.gold;
     }
 
@@ -69,7 +68,7 @@ public class Resources {
      * 
      * @return
      */
-    public int getGoldmineCapacity() {
+    public synchronized int getGoldmineCapacity() {
         return this.goldmineCapacity;
     }
 

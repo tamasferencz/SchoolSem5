@@ -20,11 +20,33 @@ public class ThreadCraft {
 
     public static void main(String[] args) {
 
-        // TODO: Start miner threads based on Configuration.NUMBER_OF_MINERS
-        // TODO: Start builder threads based on Configuration.NUMBER_OF_BUILDERS
-        // TODO: Start logging thread
+        Thread[] miners = new Thread[Configuration.NUMBER_OF_MINERS];
+        Thread[] builders = new Thread[Configuration.NUMBER_OF_BUILDERS];
 
-        // TODO: Wait for the threads to finish
+        for (int i = 0; i < miners.length; i++) {
+            miners[i] = new Thread(ThreadCraft::mineAction, "Miner-" + i);
+            miners[i].start();
+        }
+
+        for (int i = 0; i < builders.length; i++) {
+            builders[i] = new Thread(ThreadCraft::buildAction, "Builder-" + i);
+            builders[i].start();
+        }
+
+        Thread logger = new Thread(ThreadCraft::loggingAction, "Logger");
+        logger.start();
+
+        try {
+            for (Thread miner : miners) {
+                miner.join();
+            }
+            for (Thread builder : builders) {
+                builder.join();
+            }
+            logger.join();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
 
         System.out.println("Simulation over");
         logStatus();
@@ -97,6 +119,11 @@ public class ThreadCraft {
      * @param msec
      */
     public static void sleepForMsec(int msec) {
-        // TODO: Implement
+        try {
+            Thread.sleep(msec);
+        } catch (InterruptedException e) {
+            System.err.println(Thread.currentThread().getName() + " was interrupted during sleep.");
+        }
     }
+
 }
