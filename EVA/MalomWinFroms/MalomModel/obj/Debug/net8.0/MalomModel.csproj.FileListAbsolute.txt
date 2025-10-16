@@ -1,0 +1,11 @@
+C:\Users\tamas\Desktop\EVA\MalomWinFroms\MalomModel\bin\Debug\net8.0\MalomModel.deps.json
+C:\Users\tamas\Desktop\EVA\MalomWinFroms\MalomModel\bin\Debug\net8.0\MalomModel.dll
+C:\Users\tamas\Desktop\EVA\MalomWinFroms\MalomModel\bin\Debug\net8.0\MalomModel.pdb
+C:\Users\tamas\Desktop\EVA\MalomWinFroms\MalomModel\obj\Debug\net8.0\MalomModel.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\tamas\Desktop\EVA\MalomWinFroms\MalomModel\obj\Debug\net8.0\MalomModel.AssemblyInfoInputs.cache
+C:\Users\tamas\Desktop\EVA\MalomWinFroms\MalomModel\obj\Debug\net8.0\MalomModel.AssemblyInfo.cs
+C:\Users\tamas\Desktop\EVA\MalomWinFroms\MalomModel\obj\Debug\net8.0\MalomModel.csproj.CoreCompileInputs.cache
+C:\Users\tamas\Desktop\EVA\MalomWinFroms\MalomModel\obj\Debug\net8.0\MalomModel.dll
+C:\Users\tamas\Desktop\EVA\MalomWinFroms\MalomModel\obj\Debug\net8.0\refint\MalomModel.dll
+C:\Users\tamas\Desktop\EVA\MalomWinFroms\MalomModel\obj\Debug\net8.0\MalomModel.pdb
+C:\Users\tamas\Desktop\EVA\MalomWinFroms\MalomModel\obj\Debug\net8.0\ref\MalomModel.dll
