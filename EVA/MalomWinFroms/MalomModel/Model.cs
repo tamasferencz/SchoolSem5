@@ -186,8 +186,9 @@ namespace MalomModel
         internal bool FormsMillAt(int idx, int player) =>
             mills.Any(m => m.Contains(idx) && m.All(i => Board[i] == player));
 
-        public void SaveGameModel(string path, int[] board, int currentPlayer, int placed1, int placed2, bool removingMode)    {
-            persistence.SaveGame(path,board,currentPlayer,placed1,placed2,removingMode);
+        public void SaveGameModel(string path, int[] board, int currentPlayer, int placed1, int placed2, bool removingMode)
+        {
+            persistence.SaveGame(path, board, currentPlayer, placed1, placed2, removingMode);
         }
 
         public (int[] board, int currentPlayer, int placed1, int placed2, bool removingMode) LoadGameModel(string path)
