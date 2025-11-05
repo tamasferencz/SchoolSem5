@@ -197,7 +197,6 @@ int modify_applicant(void) {
 
     printf("New profession (Enter = keep '%s'): ", a->profession);
     fgets(input, sizeof(input), stdin);
-    fgets(input, sizeof(input), stdin);
     if(input[0] != '\n') {
         input[strcspn(input, "\n")] = 0;
         strncpy(a->profession, input, MAX_PROF);
