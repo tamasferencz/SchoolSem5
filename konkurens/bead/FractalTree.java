@@ -23,7 +23,8 @@ public class FractalTree extends Canvas {
             try {
                 Thread.sleep(100);
             } catch (InterruptedException ie) {
-                ie.printStackTrace();
+                Thread.currentThread().interrupt();
+                return;
             }
         }
 
@@ -36,13 +37,14 @@ public class FractalTree extends Canvas {
         try {
             drawQueue.put(new Line(x, y, x2, y2, color));
         } catch (InterruptedException ie) {
-            ie.printStackTrace();
+            Thread.currentThread().interrupt();
+            return;
         }
 
-        activeTasks.incrementAndGet();
         final int finalX2 = x2;
         final int finalY2 = y2;
         final int finalHeight = height - 1;
+        activeTasks.incrementAndGet();
         executorService.submit(() -> {
             try {
                 makeFractalTree(finalX2, finalY2, angle - 20, finalHeight);
@@ -52,8 +54,6 @@ public class FractalTree extends Canvas {
         });
 
         makeFractalTree(x2, y2, angle + 20, height - 1);
-
-        taskFinished();
     }
 
     private static void taskFinished() {
@@ -80,6 +80,8 @@ public class FractalTree extends Canvas {
                 g.drawLine(line.x1, line.y1, line.x2, line.y2);
             } catch (InterruptedException ie) {
                 ie.printStackTrace();
+                Thread.currentThread().interrupt();
+                break;
             }
         }
     }
@@ -97,6 +99,7 @@ public class FractalTree extends Canvas {
         /* Initialize graphical elements and EDT */
         FractalTree tree = new FractalTree();
         JFrame frame = new JFrame();
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(800, 600);
         frame.add(tree);
         frame.setVisible(true);
