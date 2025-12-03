@@ -1,0 +1,13 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "C/C++ Runner: Debug Session",
+      "type": "lldb",
+      "request": "launch",
+      "args": [],
+      "cwd": "/Users/tamas/SchoolSem5/OpRend/GY/gy0",
+      "program": "/Users/tamas/SchoolSem5/OpRend/GY/gy0/build/Debug/outDebug"
+    }
+  ]
+}

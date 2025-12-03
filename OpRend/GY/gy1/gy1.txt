@@ -1,3 +1,0 @@
-- inter process communication
-- 2 beadando canvason
-- ssh g0820e@opsys.inf.elte.hu
