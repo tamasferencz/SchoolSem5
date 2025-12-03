@@ -55,64 +55,64 @@ void header(const char *title)
 
 int main(void)
 {
-    int p2c[2][2], c2p[2][2];
-    pid_t pid[2];
+    int parent_to_child[2][2], child_to_parent[2][2];
+    pid_t child_pid[2];
 
     for (int i = 0; i < 2; ++i)
     {
-        if (pipe(p2c[i]) == -1)
+        if (pipe(parent_to_child[i]) == -1)
             errExit("pipe");
-        if (pipe(c2p[i]) == -1)
+        if (pipe(child_to_parent[i]) == -1)
             errExit("pipe");
     }
 
-    const char *qtext[3] = {
+    const char *questions[3] = {
         "Hany alma van az asztalon? (1-5)",
         "Hany labda gurult a kertbe? (1-5)",
         "Hany csillag van az egen? (1-5)"};
-    int qans[3] = {3, 1, 5};
-    const char *namesA[3] = {"Malac", "Szamar", "Zebra"};
-    const char *namesB[3] = {"Fecske", "Golya", "Sas"};
-    int correct[2] = {0, 0};
+    int answers[3] = {3, 1, 5};
+    const char *masked_names_A[3] = {"Malac", "Szamar", "Zebra"};
+    const char *masked_names_B[3] = {"Fecske", "Golya", "Sas"};
+    int is_correct[2] = {0, 0};
 
     for (int i = 0; i < 2; ++i)
     {
-        pid[i] = fork();
-        if (pid[i] < 0)
+        child_pid[i] = fork();
+        if (child_pid[i] < 0)
             errExit("fork");
 
-        if (pid[i] == 0)
+        if (child_pid[i] == 0)
         {
             for (int j = 0; j < 2; ++j)
             {
                 if (j != i)
                 {
-                    close(p2c[j][0]);
-                    close(p2c[j][1]);
-                    close(c2p[j][0]);
-                    close(c2p[j][1]);
+                    close(parent_to_child[j][0]);
+                    close(parent_to_child[j][1]);
+                    close(child_to_parent[j][0]);
+                    close(child_to_parent[j][1]);
                 }
             }
 
-            close(p2c[i][1]);
-            close(c2p[i][0]);
+            close(parent_to_child[i][1]);
+            close(child_to_parent[i][0]);
 
             srand((unsigned int)(time(NULL) ^ (getpid() << 16)));
 
             char buf[MSGSZ];
-            read_msg(p2c[i][0], buf);
+            read_msg(parent_to_child[i][0], buf);
 
-            const char *myname = (i == 0) ? namesA[rand_range(0, 2)] : namesB[rand_range(0, 2)];
-            write_msg(c2p[i][1], myname);
+            const char *myname = (i == 0) ? masked_names_A[rand_range(0, 2)] : masked_names_B[rand_range(0, 2)];
+            write_msg(child_to_parent[i][1], myname);
 
-            read_msg(p2c[i][0], buf);
+            read_msg(parent_to_child[i][0], buf);
 
             if (strlen(buf) > 0)
             {
                 int answer = rand_range(1, 5);
                 char ansbuf[MSGSZ];
                 snprintf(ansbuf, MSGSZ, "%d", answer);
-                write_msg(c2p[i][1], ansbuf);
+                write_msg(child_to_parent[i][1], ansbuf);
             }
 
             if (i == 1)
@@ -120,19 +120,19 @@ int main(void)
                 int bet = rand_range(0, 1); // 0 = rossz, 1 = jó
                 char betbuf[MSGSZ];
                 snprintf(betbuf, MSGSZ, "BET:%d", bet);
-                write_msg(c2p[i][1], betbuf);
+                write_msg(child_to_parent[i][1], betbuf);
             }
 
-            close(p2c[i][0]);
-            close(c2p[i][1]);
+            close(parent_to_child[i][0]);
+            close(child_to_parent[i][1]);
             _exit(0);
         }
     }
 
     for (int i = 0; i < 2; ++i)
     {
-        close(p2c[i][0]);
-        close(c2p[i][1]);
+        close(parent_to_child[i][0]);
+        close(child_to_parent[i][1]);
     }
 
     srand((unsigned int)time(NULL));
@@ -140,60 +140,61 @@ int main(void)
     header("Jatekosok erkezese");
     printf("[Szulo] Meghivom a jatekosokat a szinpadra.\n");
     for (int i = 0; i < 2; ++i)
-        write_msg(p2c[i][1], "ALARCOT");
+        write_msg(parent_to_child[i][1], "ALARCOT");
 
-    char name0[MSGSZ], name1[MSGSZ];
-    read_msg(c2p[0][0], name0);
-    read_msg(c2p[1][0], name1);
+    char child_name[2][MSGSZ];
+    read_msg(child_to_parent[0][0], child_name[0]);
+    read_msg(child_to_parent[1][0], child_name[1]);
 
-    printf("[Gyerek1] Alarcosan: %s\n", name0);
-    printf("[Gyerek2] Alarcosan: %s\n", name1);
+    printf("[Gyerek1] Alarcosan: %s\n", child_name[0]);
+    printf("[Gyerek2] Alarcosan: %s\n", child_name[1]);
 
     header("Elso kerdes");
-    int qidx = rand_range(0, 2);
-    printf("[Szulo] A kerdes: %s (helyes: %d)\n", qtext[qidx], qans[qidx]);
+    int question_index = rand_range(0, 2);
+    printf("[Szulo] A kerdes: %s (helyes: %d)\n", questions[question_index], answers[question_index]);
 
     for (int i = 0; i < 2; ++i)
-        write_msg(p2c[i][1], qtext[qidx]);
+        write_msg(parent_to_child[i][1], questions[question_index]);
 
-    char a0buf[MSGSZ], a1buf[MSGSZ];
-    read_msg(c2p[0][0], a0buf);
-    read_msg(c2p[1][0], a1buf);
+    char ans_buf[2][MSGSZ];
+    read_msg(child_to_parent[0][0], ans_buf[0]);
+    read_msg(child_to_parent[1][0], ans_buf[1]);
 
-    int a0 = atoi(a0buf);
-    int a1 = atoi(a1buf);
+    int ans_val[2];
+    ans_val[0] = atoi(ans_buf[0]);
+    ans_val[1] = atoi(ans_buf[1]);
 
-    printf("[Gyerek1 - %s] Valasz: %d\n", name0, a0);
-    printf("[Gyerek2 - %s] Valasz: %d\n", name1, a1);
+    printf("[Gyerek1 - %s] Valasz: %d\n", child_name[0], ans_val[0]);
+    printf("[Gyerek2 - %s] Valasz: %d\n", child_name[1], ans_val[1]);
 
-    correct[0] = (a0 == qans[qidx]);
-    correct[1] = (a1 == qans[qidx]);
+    is_correct[0] = (ans_val[0] == answers[question_index]);
+    is_correct[1] = (ans_val[1] == answers[question_index]);
 
-    printf("[Gyerek1] Eredmeny: %s\n", correct[0] ? "MIKULAS" : "VIRGACS");
-    printf("[Gyerek2] Eredmeny: %s\n", correct[1] ? "MIKULAS" : "VIRGACS");
+    printf("[Gyerek1] Eredmeny: %s\n", is_correct[0] ? "MIKULAS" : "VIRGACS");
+    printf("[Gyerek2] Eredmeny: %s\n", is_correct[1] ? "MIKULAS" : "VIRGACS");
 
     header("Masodik kor");
 
-    char betbuf[MSGSZ];
-    read_msg(c2p[1][0], betbuf);
+    char bet_buf[MSGSZ];
+    read_msg(child_to_parent[1][0], bet_buf);
 
-    int bet = -1;
-    if (strncmp(betbuf, "BET:", 4) == 0)
-        bet = atoi(betbuf + 4);
+    int bet_val = -1;
+    if (strncmp(bet_buf, "BET:", 4) == 0)
+        bet_val = atoi(bet_buf + 4);
 
-    printf("[Szulo] Az elso jatekos kerdese: %s\n", qtext[qidx]);
-    printf("[Szulo] Az elso jatekos valasza: %d (%s)\n", a0, correct[0] ? "jo" : "rossz");
-    if (bet != -1)
-        printf("[Gyerek2] Tippje: %d\n", bet);
-    if (bet == correct[0])
+    printf("[Szulo] Az elso jatekos kerdese: %s\n", questions[question_index]);
+    printf("[Szulo] Az elso jatekos valasza: %d (%s)\n", ans_val[0], is_correct[0] ? "jo" : "rossz");
+    if (bet_val != -1)
+        printf("[Gyerek2] Tippje: %d\n", bet_val);
+    if (bet_val == is_correct[0])
         printf("[Gyerek2] Jutalom: MIKULAS\n");
     else
         printf("[Gyerek2] Jutalom: VIRGACS\n");
 
     for (int i = 0; i < 2; ++i)
     {
-        close(p2c[i][1]);
-        close(c2p[i][0]);
+        close(parent_to_child[i][1]);
+        close(child_to_parent[i][0]);
     }
 
     for (int i = 0; i < 2; ++i)
