@@ -1,0 +1,43 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.36511.14
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MalomWPF", "MalomWPF\MalomWPF.csproj", "{6B2F7DEB-0CA7-4532-A569-458097F37ADB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MalomModel", "MalomModel\MalomModel.csproj", "{85FD8749-4C4B-D682-FC7F-45F7E0F9BB17}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MalomTests", "MalomTests\MalomTests.csproj", "{E03BD603-B7B8-32EF-0938-328943789AA4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MalomPersistence", "MalomPersistence\MalomPersistence.csproj", "{4A4697B6-8C1B-4432-A7CB-78124DEEFA39}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6B2F7DEB-0CA7-4532-A569-458097F37ADB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6B2F7DEB-0CA7-4532-A569-458097F37ADB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6B2F7DEB-0CA7-4532-A569-458097F37ADB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6B2F7DEB-0CA7-4532-A569-458097F37ADB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{85FD8749-4C4B-D682-FC7F-45F7E0F9BB17}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{85FD8749-4C4B-D682-FC7F-45F7E0F9BB17}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{85FD8749-4C4B-D682-FC7F-45F7E0F9BB17}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{85FD8749-4C4B-D682-FC7F-45F7E0F9BB17}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E03BD603-B7B8-32EF-0938-328943789AA4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E03BD603-B7B8-32EF-0938-328943789AA4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E03BD603-B7B8-32EF-0938-328943789AA4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E03BD603-B7B8-32EF-0938-328943789AA4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4A4697B6-8C1B-4432-A7CB-78124DEEFA39}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4A4697B6-8C1B-4432-A7CB-78124DEEFA39}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4A4697B6-8C1B-4432-A7CB-78124DEEFA39}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4A4697B6-8C1B-4432-A7CB-78124DEEFA39}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {1AEA23A9-84D1-43C6-9693-C43529125564}
+	EndGlobalSection
+EndGlobal

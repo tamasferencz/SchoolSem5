@@ -1,18 +1,30 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\tamas\\Desktop\\EVA\\MalomWinFroms\\",
+  "WorkspaceRootPath": "C:\\Users\\tamas\\Desktop\\UNI\\SchoolSem5\\EVA\\MalomWinFroms\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{C0BB1C47-8D88-46EB-8ECF-804650E1938F}|MalomModel\\MalomModel.csproj|c:\\users\\tamas\\desktop\\eva\\malomwinfroms\\malommodel\\persistence.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C0BB1C47-8D88-46EB-8ECF-804650E1938F}|MalomModel\\MalomModel.csproj|solutionrelative:malommodel\\persistence.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C0BB1C47-8D88-46EB-8ECF-804650E1938F}|MalomModel\\MalomModel.csproj|c:\\users\\tamas\\desktop\\eva\\malomwinfroms\\malommodel\\model.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{C0BB1C47-8D88-46EB-8ECF-804650E1938F}|MalomModel\\MalomModel.csproj|c:\\users\\tamas\\desktop\\uni\\schoolsem5\\eva\\malomwinfroms\\malommodel\\model.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{C0BB1C47-8D88-46EB-8ECF-804650E1938F}|MalomModel\\MalomModel.csproj|solutionrelative:malommodel\\model.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{F7F795B0-8ED7-4D8C-A9F1-F227A69FDCFF}|MalomWinFroms\\MalomWinFroms.csproj|c:\\users\\tamas\\desktop\\eva\\malomwinfroms\\malomwinfroms\\malom.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{C0BB1C47-8D88-46EB-8ECF-804650E1938F}|MalomModel\\MalomModel.csproj|c:\\users\\tamas\\desktop\\uni\\schoolsem5\\eva\\malomwinfroms\\malommodel\\persistence.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C0BB1C47-8D88-46EB-8ECF-804650E1938F}|MalomModel\\MalomModel.csproj|solutionrelative:malommodel\\persistence.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C0BB1C47-8D88-46EB-8ECF-804650E1938F}|MalomModel\\MalomModel.csproj|c:\\users\\tamas\\desktop\\uni\\schoolsem5\\eva\\malomwinfroms\\malommodel\\interfaces\\igamemodelpersistence.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C0BB1C47-8D88-46EB-8ECF-804650E1938F}|MalomModel\\MalomModel.csproj|solutionrelative:malommodel\\interfaces\\igamemodelpersistence.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F7F795B0-8ED7-4D8C-A9F1-F227A69FDCFF}|MalomWinFroms\\MalomWinFroms.csproj|c:\\users\\tamas\\desktop\\uni\\schoolsem5\\eva\\malomwinfroms\\malomwinfroms\\malom.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{F7F795B0-8ED7-4D8C-A9F1-F227A69FDCFF}|MalomWinFroms\\MalomWinFroms.csproj|solutionrelative:malomwinfroms\\malom.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F7F795B0-8ED7-4D8C-A9F1-F227A69FDCFF}|MalomWinFroms\\MalomWinFroms.csproj|C:\\Users\\tamas\\Desktop\\UNI\\SchoolSem5\\EVA\\MalomWinFroms\\malomwinfroms\\malom.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{F7F795B0-8ED7-4D8C-A9F1-F227A69FDCFF}|MalomWinFroms\\MalomWinFroms.csproj|solutionrelative:malomwinfroms\\malom.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E03BD603-B7B8-32EF-0938-328943789AA4}|MalomTests\\MalomTests.csproj|c:\\users\\tamas\\desktop\\uni\\schoolsem5\\eva\\malomwinfroms\\malomtests\\test1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E03BD603-B7B8-32EF-0938-328943789AA4}|MalomTests\\MalomTests.csproj|solutionrelative:malomtests\\test1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -22,7 +34,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 6,
           "Children": [
             {
               "$type": "Bookmark",
@@ -31,38 +43,75 @@
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "Malom.cs",
-              "DocumentMoniker": "C:\\Users\\tamas\\Desktop\\EVA\\MalomWinFroms\\MalomWinFroms\\Malom.cs",
+              "Title": "IGameModelPersistence.cs",
+              "DocumentMoniker": "C:\\Users\\tamas\\Desktop\\UNI\\SchoolSem5\\EVA\\MalomWinFroms\\MalomModel\\Interfaces\\IGameModelPersistence.cs",
+              "RelativeDocumentMoniker": "MalomModel\\Interfaces\\IGameModelPersistence.cs",
+              "ToolTip": "C:\\Users\\tamas\\Desktop\\UNI\\SchoolSem5\\EVA\\MalomWinFroms\\MalomModel\\Interfaces\\IGameModelPersistence.cs",
+              "RelativeToolTip": "MalomModel\\Interfaces\\IGameModelPersistence.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAABUAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-22T13:21:50.856Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Malom.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\tamas\\Desktop\\UNI\\SchoolSem5\\EVA\\MalomWinFroms\\MalomWinFroms\\Malom.cs",
               "RelativeDocumentMoniker": "MalomWinFroms\\Malom.cs",
-              "ToolTip": "C:\\Users\\tamas\\Desktop\\EVA\\MalomWinFroms\\MalomWinFroms\\Malom.cs",
+              "ToolTip": "C:\\Users\\tamas\\Desktop\\UNI\\SchoolSem5\\EVA\\MalomWinFroms\\MalomWinFroms\\Malom.cs [Design]",
+              "RelativeToolTip": "MalomWinFroms\\Malom.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-20T15:21:18.655Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Test1.cs",
+              "DocumentMoniker": "C:\\Users\\tamas\\Desktop\\UNI\\SchoolSem5\\EVA\\MalomWinFroms\\MalomTests\\Test1.cs",
+              "RelativeDocumentMoniker": "MalomTests\\Test1.cs",
+              "ToolTip": "C:\\Users\\tamas\\Desktop\\UNI\\SchoolSem5\\EVA\\MalomWinFroms\\MalomTests\\Test1.cs",
+              "RelativeToolTip": "MalomTests\\Test1.cs",
+              "ViewState": "AgIAAFQAAAAAAAAAAAAAADcAAAAiAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-16T13:04:13.728Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Malom.cs",
+              "DocumentMoniker": "C:\\Users\\tamas\\Desktop\\UNI\\SchoolSem5\\EVA\\MalomWinFroms\\MalomWinFroms\\Malom.cs",
+              "RelativeDocumentMoniker": "MalomWinFroms\\Malom.cs",
+              "ToolTip": "C:\\Users\\tamas\\Desktop\\UNI\\SchoolSem5\\EVA\\MalomWinFroms\\MalomWinFroms\\Malom.cs",
               "RelativeToolTip": "MalomWinFroms\\Malom.cs",
-              "ViewState": "AgIAABMAAAAAAAAAAAAkwAAAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAANEAAAAAAAAAAAAUwBsBAAAnAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-10-16T10:32:38.369Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "Persistence.cs",
-              "DocumentMoniker": "C:\\Users\\tamas\\Desktop\\EVA\\MalomWinFroms\\MalomModel\\Persistence.cs",
+              "DocumentMoniker": "C:\\Users\\tamas\\Desktop\\UNI\\SchoolSem5\\EVA\\MalomWinFroms\\MalomModel\\Persistence.cs",
               "RelativeDocumentMoniker": "MalomModel\\Persistence.cs",
-              "ToolTip": "C:\\Users\\tamas\\Desktop\\EVA\\MalomWinFroms\\MalomModel\\Persistence.cs",
+              "ToolTip": "C:\\Users\\tamas\\Desktop\\UNI\\SchoolSem5\\EVA\\MalomWinFroms\\MalomModel\\Persistence.cs",
               "RelativeToolTip": "MalomModel\\Persistence.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAnAAAAAAAAAA==",
+              "ViewState": "AgIAAAgAAAAAAAAAAAAUwBIAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-10-09T13:12:44.921Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
               "Title": "Model.cs",
-              "DocumentMoniker": "C:\\Users\\tamas\\Desktop\\EVA\\MalomWinFroms\\MalomModel\\Model.cs",
+              "DocumentMoniker": "C:\\Users\\tamas\\Desktop\\UNI\\SchoolSem5\\EVA\\MalomWinFroms\\MalomModel\\Model.cs",
               "RelativeDocumentMoniker": "MalomModel\\Model.cs",
-              "ToolTip": "C:\\Users\\tamas\\Desktop\\EVA\\MalomWinFroms\\MalomModel\\Model.cs",
+              "ToolTip": "C:\\Users\\tamas\\Desktop\\UNI\\SchoolSem5\\EVA\\MalomWinFroms\\MalomModel\\Model.cs",
               "RelativeToolTip": "MalomModel\\Model.cs",
-              "ViewState": "AgIAAFoAAAAAAAAAAAAuwLAAAAAeAAAAAAAAAA==",
+              "ViewState": "AgIAABYAAAAAAAAAAAAkwLEAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-10-09T10:40:42.104Z",
               "EditorCaption": ""

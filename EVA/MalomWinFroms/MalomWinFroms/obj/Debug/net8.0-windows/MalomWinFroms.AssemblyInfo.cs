@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("MalomWinFroms")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+99c3572f421606320a622ede93bf67ec4c78ecdd")]
 [assembly: System.Reflection.AssemblyProductAttribute("MalomWinFroms")]
 [assembly: System.Reflection.AssemblyTitleAttribute("MalomWinFroms")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

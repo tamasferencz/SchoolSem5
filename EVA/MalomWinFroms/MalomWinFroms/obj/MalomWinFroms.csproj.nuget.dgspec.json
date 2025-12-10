@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\tamas\\Desktop\\EVA\\MalomWinFroms\\MalomWinFroms\\MalomWinFroms.csproj": {}
+    "C:\\Users\\tamas\\Desktop\\UNI\\SchoolSem5\\EVA\\MalomWinFroms\\MalomWinFroms\\MalomWinFroms.csproj": {}
   },
   "projects": {
-    "C:\\Users\\tamas\\Desktop\\EVA\\MalomWinFroms\\MalomModel\\MalomModel.csproj": {
+    "C:\\Users\\tamas\\Desktop\\UNI\\SchoolSem5\\EVA\\MalomWinFroms\\MalomModel\\MalomModel.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\tamas\\Desktop\\EVA\\MalomWinFroms\\MalomModel\\MalomModel.csproj",
+        "projectUniqueName": "C:\\Users\\tamas\\Desktop\\UNI\\SchoolSem5\\EVA\\MalomWinFroms\\MalomModel\\MalomModel.csproj",
         "projectName": "MalomModel",
-        "projectPath": "C:\\Users\\tamas\\Desktop\\EVA\\MalomWinFroms\\MalomModel\\MalomModel.csproj",
+        "projectPath": "C:\\Users\\tamas\\Desktop\\UNI\\SchoolSem5\\EVA\\MalomWinFroms\\MalomModel\\MalomModel.csproj",
         "packagesPath": "C:\\Users\\tamas\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\tamas\\Desktop\\EVA\\MalomWinFroms\\MalomModel\\obj\\",
+        "outputPath": "C:\\Users\\tamas\\Desktop\\UNI\\SchoolSem5\\EVA\\MalomWinFroms\\MalomModel\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -69,14 +69,14 @@
         }
       }
     },
-    "C:\\Users\\tamas\\Desktop\\EVA\\MalomWinFroms\\MalomWinFroms\\MalomWinFroms.csproj": {
+    "C:\\Users\\tamas\\Desktop\\UNI\\SchoolSem5\\EVA\\MalomWinFroms\\MalomWinFroms\\MalomWinFroms.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\tamas\\Desktop\\EVA\\MalomWinFroms\\MalomWinFroms\\MalomWinFroms.csproj",
+        "projectUniqueName": "C:\\Users\\tamas\\Desktop\\UNI\\SchoolSem5\\EVA\\MalomWinFroms\\MalomWinFroms\\MalomWinFroms.csproj",
         "projectName": "MalomWinFroms",
-        "projectPath": "C:\\Users\\tamas\\Desktop\\EVA\\MalomWinFroms\\MalomWinFroms\\MalomWinFroms.csproj",
+        "projectPath": "C:\\Users\\tamas\\Desktop\\UNI\\SchoolSem5\\EVA\\MalomWinFroms\\MalomWinFroms\\MalomWinFroms.csproj",
         "packagesPath": "C:\\Users\\tamas\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\tamas\\Desktop\\EVA\\MalomWinFroms\\MalomWinFroms\\obj\\",
+        "outputPath": "C:\\Users\\tamas\\Desktop\\UNI\\SchoolSem5\\EVA\\MalomWinFroms\\MalomWinFroms\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -97,8 +97,8 @@
           "net8.0-windows7.0": {
             "targetAlias": "net8.0-windows",
             "projectReferences": {
-              "C:\\Users\\tamas\\Desktop\\EVA\\MalomWinFroms\\MalomModel\\MalomModel.csproj": {
-                "projectPath": "C:\\Users\\tamas\\Desktop\\EVA\\MalomWinFroms\\MalomModel\\MalomModel.csproj"
+              "C:\\Users\\tamas\\Desktop\\UNI\\SchoolSem5\\EVA\\MalomWinFroms\\MalomModel\\MalomModel.csproj": {
+                "projectPath": "C:\\Users\\tamas\\Desktop\\UNI\\SchoolSem5\\EVA\\MalomWinFroms\\MalomModel\\MalomModel.csproj"
               }
             }
           }
