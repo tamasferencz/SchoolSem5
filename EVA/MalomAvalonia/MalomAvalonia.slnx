@@ -1,0 +1,7 @@
+<Solution>
+  <Project Path="MalomAvalonia.Desktop/MalomAvalonia.Desktop.csproj" />
+  <Project Path="MalomAvalonia/MalomAvalonia.csproj" />
+  <Project Path="MalomModel/MalomModel.csproj" />
+  <Project Path="MalomPersistence/MalomPersistence.csproj" />
+  <Project Path="MalomTests/MalomTests.csproj" />
+</Solution>

@@ -14,11 +14,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\tamas\\Desktop\\EVA\\MalomWinFroms\\MalomModel\\MalomModel.csproj",
+      "projectUniqueName": "C:\\Users\\tamas\\Desktop\\UNI\\SchoolSem5\\EVA\\MalomWinFroms\\MalomModel\\MalomModel.csproj",
       "projectName": "MalomModel",
-      "projectPath": "C:\\Users\\tamas\\Desktop\\EVA\\MalomWinFroms\\MalomModel\\MalomModel.csproj",
+      "projectPath": "C:\\Users\\tamas\\Desktop\\UNI\\SchoolSem5\\EVA\\MalomWinFroms\\MalomModel\\MalomModel.csproj",
       "packagesPath": "C:\\Users\\tamas\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\tamas\\Desktop\\EVA\\MalomWinFroms\\MalomModel\\obj\\",
+      "outputPath": "C:\\Users\\tamas\\Desktop\\UNI\\SchoolSem5\\EVA\\MalomWinFroms\\MalomModel\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
