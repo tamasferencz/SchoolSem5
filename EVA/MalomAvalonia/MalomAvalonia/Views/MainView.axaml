@@ -23,7 +23,7 @@
     </UserControl.Styles>
 
     <Grid>
-        <Canvas Margin="20" Width="900" Height="900" HorizontalAlignment="Left" VerticalAlignment="Top">
+        <Canvas Margin="1" Width="800" Height="800" HorizontalAlignment="Left" VerticalAlignment="Top">
             <Line StartPoint="150,150" EndPoint="480,150" Stroke="Black" StrokeThickness="3" />
             <Line StartPoint="480,150" EndPoint="810,150" Stroke="Black" StrokeThickness="3" />
             <Line StartPoint="810,150" EndPoint="810,480" Stroke="Black" StrokeThickness="3" />

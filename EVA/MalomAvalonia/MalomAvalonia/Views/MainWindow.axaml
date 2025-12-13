@@ -3,8 +3,8 @@
         xmlns:views="clr-namespace:MalomAvalonia.Views"
         x:Class="MalomAvalonia.Views.MainWindow"
         Title="Malom" 
-        Width="1600" 
-        Height="950"
+        Width="1500" 
+        Height="800"
         Icon="/Assets/avalonia-logo.ico">
     
     <views:MainView />
