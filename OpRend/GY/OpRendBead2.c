@@ -203,6 +203,23 @@ int main()
                     char msg[MSGSZ];
                     read_msg(parent_to_child[k][0], msg);
 
+                    char *names = msg;
+                    int semicolons = 0;
+                    for (int i = 0; msg[i] != '\0'; i++)
+                    {
+                        if (msg[i] == ';')
+                        {
+                            semicolons++;
+                            if (semicolons == 3)
+                            {
+                                names = &msg[i + 1];
+                                break;
+                            }
+                        }
+                    }
+
+                    write_msg(child_to_parent[k][1], names);
+
                     char out[MSGSZ];
                     snprintf(out, sizeof(out), "KESZ! Megyek haza, kerem a kovetkezot!\n");
 
@@ -224,10 +241,15 @@ int main()
                 write_msg(parent_to_child[k][1], send);
                 close(parent_to_child[k][1]);
 
+                char names[MSGSZ];
+                read_msg(child_to_parent[k][0], names);
+                printf("-----------------------------------------------------\n");
+                printf("[%s] indult: %d fő, szakma: %s\n", vehicle, passengers, groups[grpIdx].prof);
+                printf("Utasok: %s\n", names);
+
                 char reply[MSGSZ];
                 read_msg(child_to_parent[k][0], reply);
 
-                printf("[%s] indult: %d fő, szakma: %s\n", vehicle, passengers, groups[grpIdx].prof);
                 printf("[SZÜLŐ] Visszajelzes gyerektol: %s\n", reply);
 
                 close(child_to_parent[k][0]);

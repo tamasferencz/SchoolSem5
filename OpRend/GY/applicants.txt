@@ -8,23 +8,19 @@ asztalos;Fekete Maria;29;06701234570
 asztalos;Balazs Peter;50;06701234571
 asztalos;Gabor Adam;38;06701234572
 asztalos;Erika Zoltan;26;06701234573
-
 villanyszerelo;Kiss Istvan;41;06101234567
 villanyszerelo;Major Orsolya;36;06101234568
 villanyszerelo;Kovacs Tamas;27;06101234569
 villanyszerelo;Nagy Zsuzsa;31;06101234570
 villanyszerelo;Toth Gabor;44;06101234571
 villanyszerelo;Szalai Kata;22;06101234572
-
 vizes;Kertesz Lajos;39;06211234567
 vizes;Farkas Petra;34;06211234568
 vizes;Kerekes Imre;48;06211234569
 vizes;Papp Edit;29;06211234570
-
 sofor;Janos Kovac;37;06311234567
 sofor;Erika Novak;42;06311234568
 sofor;Miklos Pinter;33;06311234569
-
 chef;Chef One;30;06411234567
 chef;Chef Two;29;06411234568
 chef;Chef Three;40;06411234569
