@@ -53,7 +53,7 @@
             overflow: hidden;
             display: flex;
             flex-direction: column;
-            min-height: 700px; /* Kicsit növeltem a navigáció miatt */
+            min-height: 700px;
             transition: background-color 0.3s;
         }
 
@@ -222,7 +222,7 @@
             color: #ffca2c; 
         }
 
-        /* --- ÚJ CSS A NAVIGÁCIÓHOZ --- */
+        /* Navigáció */
         .pagination-container {
             display: flex;
             flex-wrap: wrap;
@@ -263,6 +263,32 @@
         body.dark-mode .nav-btn.active {
             background-color: #3b82f6;
             color: white;
+        }
+
+        /* ÚJ: Nyilacskák stílusa */
+        .nav-arrow {
+            background: none;
+            border: none;
+            font-size: 1.4rem;
+            color: var(--text-main);
+            cursor: pointer;
+            padding: 0 10px;
+            transition: all 0.2s;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0.7;
+        }
+        .nav-arrow:hover {
+            opacity: 1;
+            transform: scale(1.2);
+            color: var(--option-selected-border);
+        }
+        .nav-arrow:disabled {
+            opacity: 0.2;
+            cursor: not-allowed;
+            transform: none;
+            color: var(--text-muted);
         }
 
         body.dark-mode .text-muted { color: var(--text-muted) !important; }
@@ -314,8 +340,14 @@
             <div>
                 <span class="badge bg-primary fs-6 mb-1" id="category-badge">Kategória</span>
                 <span id="override-indicator" class="override-badge" style="display:none;">JAVÍTÓ MÓD</span>
-                <div class="text-muted small fw-bold mt-1">Kérdés <span id="current-count">1</span> / <span id="total-count">0</span></div>
+                
+                <div class="d-flex align-items-center mt-1">
+                    <button class="nav-arrow me-2" id="prev-arrow" onclick="stepQuestion(-1)" title="Előző kérdés">❮</button>
+                    <div class="text-muted small fw-bold">Kérdés <span id="current-count">1</span> / <span id="total-count">0</span></div>
+                    <button class="nav-arrow ms-2" id="next-arrow" onclick="stepQuestion(1)" title="Következő kérdés">❯</button>
+                </div>
             </div>
+            
             <div class="text-end">
                 <div class="fs-4 fw-bold text-success" id="score-display">0 pont</div>
                 <button class="btn btn-sm btn-link text-muted text-decoration-none" onclick="location.reload()">Kilépés</button>
@@ -473,25 +505,23 @@
         loadQuestion();
     }
 
-    // --- ÚJ FÜGGVÉNY: Navigációs gombok generálása ---
+    // Navigációs gombok generálása (alsó 10-es sáv)
     function createPagination() {
         const container = document.getElementById('pagination-container');
         container.innerHTML = '';
         
         const total = quizQuestions.length;
-        // 10-esével hozunk létre gombokat. Math.ceil(159/10) = 16 gomb.
         const buttonCount = Math.ceil(total / 10);
 
         for (let i = 0; i < buttonCount; i++) {
             const startIdx = i * 10;
             const btn = document.createElement('div');
             btn.className = 'nav-btn';
-            btn.innerText = i + 1; // A gomb száma: 1, 2, 3...
+            btn.innerText = i + 1;
             btn.id = `nav-btn-${i}`;
-            btn.title = `${startIdx + 1}. kérdéstől`; // Tooltip
+            btn.title = `${startIdx + 1}. kérdéstől`;
             
             btn.onclick = function() {
-                // Csak akkor engedjük ugrani, ha nem random módban vagyunk (bár ott el van rejtve)
                 jumpToQuestion(startIdx);
             };
             
@@ -499,22 +529,27 @@
         }
     }
 
-    // --- ÚJ FÜGGVÉNY: Ugrás egy adott indexre ---
     function jumpToQuestion(idx) {
         if (idx >= quizQuestions.length) return;
         currentIdx = idx;
         loadQuestion();
     }
+    
+    // --- ÚJ LÉPTETŐ FUNKCIÓ A NYILAKHOZ ---
+    function stepQuestion(direction) {
+        const newIdx = currentIdx + direction;
+        if(newIdx >= 0 && newIdx < quizQuestions.length) {
+            currentIdx = newIdx;
+            loadQuestion();
+        }
+    }
 
-    // --- ÚJ FÜGGVÉNY: Navigációs gomb aktív állapotának frissítése ---
+    // Navigációs gomb aktív állapotának frissítése
     function updatePaginationStatus() {
-        // Melyik 10-es blokkban vagyunk?
         const activeBlock = Math.floor(currentIdx / 10);
         
-        // Minden gombról levesszük az active class-t
         document.querySelectorAll('.nav-btn').forEach(btn => btn.classList.remove('active'));
         
-        // A megfelelőre rátesszük
         const activeBtn = document.getElementById(`nav-btn-${activeBlock}`);
         if(activeBtn) {
             activeBtn.classList.add('active');
@@ -537,11 +572,15 @@
         if (!isOverrideMode) {
             document.getElementById('check-btn').style.display = 'block';
             document.getElementById('next-btn').style.display = 'none';
-            document.getElementById('skip-btn').style.display = 'none'; // A nav panel kiváltja, de meghagyhatjuk
+            document.getElementById('skip-btn').style.display = 'none'; 
         } 
 
-        // Navigáció frissítése
+        // Navigáció frissítése (alsó sáv)
         updatePaginationStatus();
+
+        // --- Nyilak állapotának frissítése ---
+        document.getElementById('prev-arrow').disabled = (currentIdx === 0);
+        document.getElementById('next-arrow').disabled = (currentIdx === quizQuestions.length - 1);
 
         const isMulti = q.type === 'multi' || q.correct.length > 1;
         const inputType = isMulti ? 'checkbox' : 'radio';
@@ -675,7 +714,7 @@
         document.getElementById('next-btn').style.display = 'block';
     }
 
-    // Megmaradt a régi ugrás gomb is funkciónak, de a felületen a nav panel dominál
+    // Megmaradt a régi ugrás gomb is funkciónak
     function skipQuestions() {
         currentIdx += 10;
         if (currentIdx < quizQuestions.length) {
