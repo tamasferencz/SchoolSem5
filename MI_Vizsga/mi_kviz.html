@@ -53,7 +53,7 @@
             overflow: hidden;
             display: flex;
             flex-direction: column;
-            min-height: 600px;
+            min-height: 700px; /* Kicsit növeltem a navigáció miatt */
             transition: background-color 0.3s;
         }
 
@@ -139,7 +139,7 @@
             cursor: pointer;
         }
 
-        /* Feedback styles - Sötét módban is olvasható legyen */
+        /* Feedback styles */
         .correct-answer { background-color: #d1e7dd !important; border-color: #badbcc !important; color: #0f5132 !important; }
         .wrong-answer { background-color: #f8d7da !important; border-color: #f5c2c7 !important; color: #842029 !important; }
         .missed-answer { border: 2px dashed #198754 !important; background-color: transparent !important; }
@@ -219,10 +219,52 @@
         }
         body.dark-mode #theme-toggle {
             background: #333;
-            color: #ffca2c; /* Nap sárga */
+            color: #ffca2c; 
         }
 
-        /* Bootstrap utility overrides for dark mode */
+        /* --- ÚJ CSS A NAVIGÁCIÓHOZ --- */
+        .pagination-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 5px;
+            justify-content: center;
+            margin-top: 20px;
+            padding-top: 15px;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .nav-btn {
+            width: 35px;
+            height: 35px;
+            border: 1px solid var(--border-color);
+            background-color: var(--card-bg);
+            color: var(--text-main);
+            border-radius: 6px;
+            font-size: 0.85rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-weight: 600;
+        }
+
+        .nav-btn:hover {
+            background-color: var(--option-hover);
+            border-color: #aaa;
+        }
+
+        .nav-btn.active {
+            background-color: var(--option-selected-border);
+            color: white;
+            border-color: var(--option-selected-border);
+        }
+        
+        body.dark-mode .nav-btn.active {
+            background-color: #3b82f6;
+            color: white;
+        }
+
         body.dark-mode .text-muted { color: var(--text-muted) !important; }
         body.dark-mode .text-dark { color: #e0e0e0 !important; }
         
@@ -230,27 +272,23 @@
 </head>
 <body>
 
-<!-- Sötét mód kapcsoló -->
 <button id="theme-toggle" onclick="toggleTheme()" title="Sötét mód váltása">🌙</button>
 
 <div class="main-card">
     
-    <!-- 1. Indító képernyő -->
     <div id="start-screen" class="start-screen">
         <h1 class="mb-3 text-primary fw-bold">MI Vizsgafelkészítő</h1>
         <p class="mb-4 text-muted">Kérdések száma: <span id="total-q-count" class="fw-bold">...</span></p>
         
         <div class="d-flex flex-column align-items-center">
-            <!-- 1. Mód: Lineáris kérdés, Kevert válasz -->
             <button class="btn btn-outline-primary btn-mode shadow-sm" onclick="startQuiz('linear')">
                 <span class="btn-icon">📋</span>
                 <div>
                     <div class="fs-5 fw-bold">Sorrendben</div>
-                    <div class="small">Válaszok keverve (+Ugrás gomb)</div>
+                    <div class="small">Válaszok keverve (+ Navigáció)</div>
                 </div>
             </button>
 
-            <!-- 2. Mód: Random kérdés, Kevert válasz -->
             <button class="btn btn-outline-primary btn-mode shadow-sm" onclick="startQuiz('random')">
                 <span class="btn-icon">🔀</span>
                 <div>
@@ -261,7 +299,6 @@
             
             <hr class="w-50 my-3" style="border-color: var(--border-color);">
             
-            <!-- 3. Mód: Javító (Minden fix) -->
             <button class="btn btn-warning btn-mode shadow-sm" onclick="startQuiz('override')">
                 <span class="btn-icon">🛠️</span>
                 <div>
@@ -272,7 +309,6 @@
         </div>
     </div>
 
-    <!-- 2. Kvíz felület -->
     <div id="quiz-container" class="quiz-container">
         <div class="header-bar">
             <div>
@@ -293,20 +329,23 @@
             <div id="feedback-box" class="alert mt-3" style="display: none; border-radius: 10px;"></div>
 
             <div class="d-grid gap-2 mt-4">
-                <!-- Normál mód gombok -->
                 <button id="check-btn" class="btn btn-primary btn-lg shadow-sm" onclick="checkAnswer()">Ellenőrzés</button>
                 <button id="next-btn" class="btn btn-outline-primary btn-lg shadow-sm" style="display: none;" onclick="nextQuestion()">Következő kérdés</button>
                 
-                <!-- ÚJ UGRÁS GOMB (csak lineáris módban látszik majd) -->
                 <button id="skip-btn" class="btn btn-skip btn-lg shadow-sm" style="display: none;" onclick="skipQuestions()">⏩ +10 Ugrás</button>
                 
-                <!-- Javító mód gomb -->
                 <button id="save-next-btn" class="btn btn-warning btn-lg shadow-sm fw-bold" style="display: none;" onclick="saveAndNext()">Mentés és Következő ➡</button>
             </div>
+
+            <div id="pagination-wrapper" style="display:none;">
+                <div class="text-muted small text-center mt-3">Gyorsugrás tizesével:</div>
+                <div id="pagination-container" class="pagination-container">
+                    </div>
+            </div>
+
         </div>
     </div>
 
-    <!-- 3. Záró képernyő (Normál) -->
     <div id="end-screen" class="end-screen" style="display: none;">
         <h2 class="mb-4 text-success">Teszt Befejezve! 🎉</h2>
         <div class="display-1 mb-3 fw-bold"><span id="final-score">0</span> <span class="fs-4 text-muted">/ <span id="final-total">0</span></span></div>
@@ -317,7 +356,6 @@
         <button class="btn btn-primary btn-lg mt-4 px-5 rounded-pill shadow" onclick="location.reload()">Új teszt indítása</button>
     </div>
 
-    <!-- 4. Záró képernyő (Export) -->
     <div id="export-screen" class="end-screen" style="display: none;">
         <h3 class="mb-3 text-warning">Javítás kész! 💾</h3>
         <p class="text-muted">A módosításaidat tartalmazó új fájl elkészült.</p>
@@ -336,7 +374,6 @@
     </div>
 </div>
 
-<!-- KÜLSŐ FÁJL BETÖLTÉSE -->
 <script src="questions.js"></script>
 
 <script>
@@ -399,6 +436,7 @@
         const saveBtn = document.getElementById('save-next-btn');
         const scoreDisplay = document.getElementById('score-display');
         const overrideBadge = document.getElementById('override-indicator');
+        const navWrapper = document.getElementById('pagination-wrapper');
 
         if (isOverrideMode) {
             // JAVÍTÓ MÓD: Eredeti sorrend mindenben
@@ -407,6 +445,10 @@
             saveBtn.style.display = 'block';
             scoreDisplay.style.display = 'none';
             overrideBadge.style.display = 'inline-block';
+            
+            createPagination(); // Navigáció létrehozása
+            navWrapper.style.display = 'block';
+
         } else {
             // NORMÁL MÓDOK: Másolatot használunk
             quizQuestions = JSON.parse(JSON.stringify(questions)); 
@@ -414,8 +456,12 @@
             if (mode === 'random') {
                 // Ha Random mód: Keverjük a kérdések sorrendjét is
                 shuffleArray(quizQuestions);
+                navWrapper.style.display = 'none'; // Random módban nincs értelme a fix navigációnak
+            } else {
+                // Lineáris mód
+                createPagination(); // Navigáció létrehozása
+                navWrapper.style.display = 'block';
             }
-            // Ha 'linear' mód: Nem keverjük a kérdéseket, marad 1..N
             
             checkBtn.style.display = 'block';
             saveBtn.style.display = 'none';
@@ -425,6 +471,54 @@
 
         document.getElementById('total-count').innerText = quizQuestions.length;
         loadQuestion();
+    }
+
+    // --- ÚJ FÜGGVÉNY: Navigációs gombok generálása ---
+    function createPagination() {
+        const container = document.getElementById('pagination-container');
+        container.innerHTML = '';
+        
+        const total = quizQuestions.length;
+        // 10-esével hozunk létre gombokat. Math.ceil(159/10) = 16 gomb.
+        const buttonCount = Math.ceil(total / 10);
+
+        for (let i = 0; i < buttonCount; i++) {
+            const startIdx = i * 10;
+            const btn = document.createElement('div');
+            btn.className = 'nav-btn';
+            btn.innerText = i + 1; // A gomb száma: 1, 2, 3...
+            btn.id = `nav-btn-${i}`;
+            btn.title = `${startIdx + 1}. kérdéstől`; // Tooltip
+            
+            btn.onclick = function() {
+                // Csak akkor engedjük ugrani, ha nem random módban vagyunk (bár ott el van rejtve)
+                jumpToQuestion(startIdx);
+            };
+            
+            container.appendChild(btn);
+        }
+    }
+
+    // --- ÚJ FÜGGVÉNY: Ugrás egy adott indexre ---
+    function jumpToQuestion(idx) {
+        if (idx >= quizQuestions.length) return;
+        currentIdx = idx;
+        loadQuestion();
+    }
+
+    // --- ÚJ FÜGGVÉNY: Navigációs gomb aktív állapotának frissítése ---
+    function updatePaginationStatus() {
+        // Melyik 10-es blokkban vagyunk?
+        const activeBlock = Math.floor(currentIdx / 10);
+        
+        // Minden gombról levesszük az active class-t
+        document.querySelectorAll('.nav-btn').forEach(btn => btn.classList.remove('active'));
+        
+        // A megfelelőre rátesszük
+        const activeBtn = document.getElementById(`nav-btn-${activeBlock}`);
+        if(activeBtn) {
+            activeBtn.classList.add('active');
+        }
     }
 
     function loadQuestion() {
@@ -443,17 +537,11 @@
         if (!isOverrideMode) {
             document.getElementById('check-btn').style.display = 'block';
             document.getElementById('next-btn').style.display = 'none';
-            
-            // Ugrás gomb kezelése: Csak lineáris módban, és csak ha még nem ellenőriztük
-            if(isLinearMode) {
-                document.getElementById('skip-btn').style.display = 'block';
-            } else {
-                document.getElementById('skip-btn').style.display = 'none';
-            }
-        } else {
-            // Javító módban nincs ugrás
-            document.getElementById('skip-btn').style.display = 'none';
-        }
+            document.getElementById('skip-btn').style.display = 'none'; // A nav panel kiváltja, de meghagyhatjuk
+        } 
+
+        // Navigáció frissítése
+        updatePaginationStatus();
 
         const isMulti = q.type === 'multi' || q.correct.length > 1;
         const inputType = isMulti ? 'checkbox' : 'radio';
@@ -587,7 +675,7 @@
         document.getElementById('next-btn').style.display = 'block';
     }
 
-    // --- ÚJ FÜGGVÉNY: 10 Kérdés ugrása ---
+    // Megmaradt a régi ugrás gomb is funkciónak, de a felületen a nav panel dominál
     function skipQuestions() {
         currentIdx += 10;
         if (currentIdx < quizQuestions.length) {
