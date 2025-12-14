@@ -14,7 +14,7 @@
             --border-color: #e9ecef;
             --option-hover: #f8f9fa;
             --option-selected-bg: #eff6ff;
-            --option-selected-border: #3b82f6;
+            --option-selected-border: #3bf65a;
             --header-border: #f0f0f0;
         }
 
@@ -26,8 +26,8 @@
             --text-muted: #a0a0a0;
             --border-color: #333333;
             --option-hover: #2d2d2d;
-            --option-selected-bg: #1a3b5c;
-            --option-selected-border: #60a5fa;
+            --option-selected-bg: #205c1a;
+            --option-selected-border: #60fa6f;
             --header-border: #2d2d2d;
         }
 
@@ -261,7 +261,7 @@
         }
         
         body.dark-mode .nav-btn.active {
-            background-color: #3b82f6;
+            background-color: #3bf648;
             color: white;
         }
 
@@ -293,6 +293,50 @@
 
         body.dark-mode .text-muted { color: var(--text-muted) !important; }
         body.dark-mode .text-dark { color: #e0e0e0 !important; }
+
+        .btn-primary {
+            background-color: #198754 !important; /* Bootstrap zöld */
+            border-color: #198754 !important;
+        }
+        .btn-primary:hover {
+            background-color: #157347 !important; /* Sötétebb zöld hoverkor */
+            border-color: #157347 !important;
+        }
+        
+        .btn-outline-primary {
+            color: #198754 !important;
+            border-color: #198754 !important;
+        }
+        .btn-outline-primary:hover {
+            background-color: #198754 !important;
+            color: white !important;
+        }
+
+        /* 2. Radio button és Checkbox pipák színe */
+        .form-check-input:checked {
+            background-color: #198754 !important;
+            border-color: #198754 !important;
+        }
+        
+        /* Fókusz effekt (az a kis kék derengés kattintáskor) eltüntetése/zöldítése */
+        .form-check-input:focus, .btn:focus {
+            box-shadow: 0 0 0 0.25rem rgba(25, 135, 84, 0.25) !important;
+        }
+
+        /* 3. Header (fejléc) stílus */
+        .header-bar {
+            border-bottom: 3px solid #198754 !important; /* Zöld csík alul */
+            /* Ha a hátteret is zöldesre akarod, vedd ki a kommentjelet a kövi sor elől: */
+            /* background-color: #f0fff4 !important; */ 
+        }
+
+        /* 4. Egyéb kék elemek (Címek, Kategória címke) */
+        .text-primary {
+            color: #198754 !important;
+        }
+        .badge.bg-primary {
+            background-color: #198754 !important;
+        }
         
     </style>
 </head>
