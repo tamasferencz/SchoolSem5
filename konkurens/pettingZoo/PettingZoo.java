@@ -2,6 +2,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.BlockingQueue;
+import java.util.concurrent.ThreadLocalRandom;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicInteger;
 
@@ -10,6 +11,12 @@ public class PettingZoo implements Runnable {
     private AtomicInteger guestCount = new AtomicInteger(0);
 
     private volatile boolean open = true;
+
+    private FoodProducer producer;
+    private Thread producerThread;
+
+    private Doctor doctor;
+    private Thread doctorThread;
 
     private List<Animal> stable = new ArrayList<>();
     private List<Animal> runway = new ArrayList<>();
@@ -28,6 +35,13 @@ public class PettingZoo implements Runnable {
         for (int i = 0; i < 10; i++) {
             startAnimal(new GuineaPig(this));
         }
+        producer = new FoodProducer(this);
+        producerThread = new Thread(producer);
+        producerThread.start();
+
+        doctor = new Doctor(this);
+        doctorThread = new Thread(doctor);
+        doctorThread.start();
     }
 
     private void startAnimal(Animal animal) {
@@ -59,8 +73,30 @@ public class PettingZoo implements Runnable {
         }
     }
 
+    public void markSick(Animal animal) {
+        doctor.addSickAnimal(animal);
+    }
+
     public void close() {
         open = false;
+
+        try {
+            producerThread.join(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        if (producerThread.isAlive()) {
+            producerThread.interrupt();
+        }
+
+        try {
+            doctorThread.join(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        if (doctorThread.isAlive()) {
+            doctorThread.interrupt();
+        }
 
         long deadline = System.currentTimeMillis() + 10000;
 
@@ -90,19 +126,27 @@ public class PettingZoo implements Runnable {
         }
     }
 
-    public boolean buyPetFood(int customer) {
+    public int buyPetFood(int customer) {
         try {
-            int food = foodSupply.poll(100, TimeUnit.MILLISECONDS);
-            if (food != 0) {
-                return true;
+            Integer food = foodSupply.poll(100, TimeUnit.MILLISECONDS);
+            if (food != null) {
+                return food;
             } else {
-                return false;
+                return 0;
             }
 
         } catch (InterruptedException e) {
             Thread.currentThread().interrupt();
-            return false;
+            return 0;
         }
+    }
+
+    public synchronized Animal getRandomAnimal() {
+        if (runway.isEmpty()) {
+            return null;
+        }
+        int index = ThreadLocalRandom.current().nextInt(runway.size());
+        return runway.get(index);
     }
 
     @Override
