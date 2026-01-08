@@ -164,7 +164,7 @@ try {
 ```java
 try {
     // A főszál alszik, amíg a szimuláció fut (pl. 15 mp)
-    Thread.sleep(SHUTDOWN_TIME);
+    Thread.sleep(1500);
 } catch (InterruptedException e) {
     e.printStackTrace();
 } finally {
