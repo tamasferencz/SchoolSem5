@@ -1,4 +1,4 @@
-# 🆘 Konkurens Programozás Vizsga
+# Konkurens Programozás
 
 ## Tartalom
 
