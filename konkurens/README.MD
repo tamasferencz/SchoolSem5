@@ -160,6 +160,17 @@ try {
 - Interface vs Class:
   - Helyes: `Map<String, Integer> m = new ConcurrentHashMap<>();`
   - A polimorfizmus használata fontos.
-- Ne felejtsd el leállítani az `Executor`-t (`executor.shutdown()`), különben a program nem áll le.
+#Ne felejtsd el leállítani az `Executor`-t (`executor.shutdown()`), különben a program nem áll le.
+```java
+try {
+    // A főszál alszik, amíg a szimuláció fut (pl. 15 mp)
+    Thread.sleep(SHUTDOWN_TIME);
+} catch (InterruptedException e) {
+    e.printStackTrace();
+} finally {
+    // Lejár az idő -> Mindenkit lelövünk
+    executor.shutdownNow(); 
+}
+```
 
 ---
